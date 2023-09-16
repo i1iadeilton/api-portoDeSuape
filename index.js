@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 
+
 //forma de ler JSON /moddlewares (consigo enviar json e receber json)
 app.use(
     express.urlencoded({
@@ -11,6 +12,12 @@ app.use(
 );
 
 app.use(express.json());
+
+//rotas da API
+const empresaRoutes = require('./routes/empresaRoutes');
+
+//redericionar para empresaRoutes
+app.use('/empresa', empresaRoutes)
 
 //rota inicial / endpoint
 app.get('/', (req, res) => {
