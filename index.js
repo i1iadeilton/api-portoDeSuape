@@ -1,10 +1,11 @@
 //config inicial
+require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
 
 
-//forma de ler JSON /moddlewares (consigo enviar json e receber json)
+//forma de ler JSON /middlewares (consigo enviar json e receber json)
 app.use(
     express.urlencoded({
         extended: true,
@@ -27,11 +28,11 @@ app.get('/', (req, res) => {
     res.json({ message: 'Oi Express!'})
 });
 
-//mongodb+srv://equipe:equipe123456@cluster0.mvifozl.mongodb.net/bancodaapi?retryWrites=true&w=majority
+
 
 //porta (para o navegador ver o express)
-const DB_USER = 'equipe';
-const DB_Password = encodeURIComponent('equipe123456')
+const DB_USER = process.env.DB_USER 
+const DB_Password = encodeURIComponent(process.env.DB_Password)
 
 mongoose
     .connect(

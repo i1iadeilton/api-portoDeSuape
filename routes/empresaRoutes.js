@@ -72,7 +72,64 @@ router.get('/:id', async (req, res) => {
         res.status(200).json(empresa)
 
     } catch (error) {
-        res.status(5000).json({error: error}) 
+        res.status(500).json({error: error}) 
+    }
+})
+
+//Update - atualização de dados(PUT , PATCH)
+router.patch('/:id', async (req, res) =>{
+
+    const id = req.params.id
+
+    const { Nome, Atividade, Município, Polo, Endereço, Contato, Latitude, Longitude } = req.body;
+
+    const empresa = {
+        id,
+        Nome,
+        Atividade,
+        Município,
+        Polo,
+        Endereço,
+        Contato,
+        Latitude,
+        Longitude
+    }
+
+    try {
+        
+        const updateEmpresa = await Empresa.updateOne({id: id}, empresa)
+
+        //verificar se o usuário existe
+        if(updateEmpresa.matchedCount === 0){
+            res.status(422).json({ message: 'Empresa não encontrada'})
+            return
+        }
+
+        res.status(200).json(empresa)
+    } 
+    catch (error) {
+        res.status(500).json({error: error})        
+    }
+})
+
+router.delete('/:id', async (req, res) =>{
+
+    const id = req.params.id
+
+    const empresa = await Empresa.findOne({id: id});
+
+    if(!empresa){
+        res.status(422).json({message: 'A empresa não foi encontrada!'})
+        return
+    }
+
+    try {
+        await Empresa.deleteOne({id: id})
+        
+        res.status(200).json({message: 'Empresa deletada com sucesso!'})
+    } 
+    catch (error) {
+        res.status(500).json({error: error}) 
     }
 })
 
