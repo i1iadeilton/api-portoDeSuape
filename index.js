@@ -32,11 +32,11 @@ app.get('/', (req, res) => {
 
 //porta (para o navegador ver o express)
 const DB_USER = process.env.DB_USER 
-const DB_Password = encodeURIComponent(process.env.DB_Password)
+const DB_PASSWORD = encodeURIComponent(process.env.DB_PASSWORD)
 
 mongoose
     .connect(
-        `mongodb+srv://${DB_USER}:${DB_Password}@cluster0.mvifozl.mongodb.net/bancodaapi?retryWrites=true&w=majority`,
+        `mongodb+srv://${DB_USER}:${DB_PASSWORD}@cluster0.mvifozl.mongodb.net/bancodaapi?retryWrites=true&w=majority`,
     )
     .then(() =>{
         console.log('Conectamos ao MongoDB!')
