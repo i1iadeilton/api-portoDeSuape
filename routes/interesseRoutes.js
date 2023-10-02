@@ -29,7 +29,7 @@ router.post('/', async (req, res) => {
         // se a Ponto não existir, insere os dados no banco de dados
         if(!pontoExiste) {
             //criando dados(passando o objeto)
-            await PontoDeInteresse.create(PontoDeInteresse);
+            await PontoDeInteresse.create(ponto);
             //dado criado com sucesso
             res.status(201).json({message: 'Ponto inserida no sistema com sucesso!'});
         }

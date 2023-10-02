@@ -22,6 +22,7 @@ const interesseRoutes = require('./routes/interesseRoutes');
 app.use('/empresa', empresaRoutes)
 app.use('/ponto', interesseRoutes)
 
+
 //rota inicial / endpoint
 app.get('/', (req, res) => {
 

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 //criar tabela empresa
-const ponto = mongoose.model('PontoDeInteresse', {
+const Ponto = mongoose.model('PontoDeInteresse', {
 
     id: Number,
     Nome: String,
@@ -12,4 +12,4 @@ const ponto = mongoose.model('PontoDeInteresse', {
     Longitude: String,
 })
 
-module.exports = ponto
+module.exports = Ponto
