@@ -17,10 +17,12 @@ app.use(express.json());
 //rotas da API
 const empresaRoutes = require('./routes/empresaRoutes');
 const interesseRoutes = require('./routes/interesseRoutes');
+const userRoutes = require('./routes/userRoutes');
 
 //redericionar para empresaRoutes
 app.use('/empresa', empresaRoutes)
 app.use('/ponto', interesseRoutes)
+app.use('/user', userRoutes)
 
 
 //rota inicial / endpoint
